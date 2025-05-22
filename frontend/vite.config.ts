@@ -5,10 +5,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/': {
-        target: 'http://backend:8080',
-        changeOrigin: true,
-      },
       '/login': { // หรืออาจจะรวมอยู่ใน /api
         target: 'http://backend:8080', // ตรวจสอบตรงนี้!
         changeOrigin: true,
