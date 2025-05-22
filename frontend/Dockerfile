@@ -19,7 +19,8 @@ COPY . .
 EXPOSE 5173
 
 # Command สำหรับรัน development server
-CMD ["npm", "run", "dev"]
+#CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev", "--", "--host"]
 
 # Stage 2: Production stage (สำหรับ serve static files ที่ build แล้ว)
 FROM node:20-alpine AS build
