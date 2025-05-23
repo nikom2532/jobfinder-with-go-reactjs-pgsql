@@ -1,10 +1,12 @@
+// 📁 src/pages/Jobs.tsx
+
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-interface Job {
-  id: number
-  title: string
-  description: string
+type Job = {
+  ID: number
+  Title: string
+  Description: string
 }
 
 export default function Jobs() {
@@ -16,9 +18,10 @@ export default function Jobs() {
         const token = localStorage.getItem('token')
         const res = await axios.get<Job[]>('/jobs', {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}`
+          }
         })
+        console.log('Jobs response:', res.data)
         setJobs(res.data)
       } catch (err) {
         console.error('Error fetching jobs:', err)
@@ -33,8 +36,8 @@ export default function Jobs() {
       <ul className="space-y-4">
         {jobs.map((job) => (
           <li key={job.id} className="p-4 border rounded shadow">
-            <h3 className="text-xl font-semibold">{job.title}</h3>
-            <p className="text-gray-600">{job.description}</p>
+            <h3 className="text-xl font-semibold">{job.Title}</h3>
+            <p className="text-gray-600">{job.Description}</p>
           </li>
         ))}
       </ul>
